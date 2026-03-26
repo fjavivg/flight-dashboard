@@ -6,7 +6,7 @@ export default function Home() {
   const [speed, setSpeed] = useState(845);
   const [heading, setHeading] = useState(274);
   const [fuel, setFuel] = useState(78);
-  const [history, setHistory] = useState([
+  const [history, setHistory] = useState<number[]>([
     34800, 34920, 35010, 34950, 35080, 35120, 35040,
   ]);
 
@@ -38,7 +38,7 @@ export default function Home() {
   const min = Math.min(...history);
   const range = max - min || 1;
 
-  const radarDots = useMemo(
+  const radarDots: { top: string; left: string }[] = useMemo(
     () => [
       { top: "24%", left: "62%" },
       { top: "40%", left: "72%" },
@@ -127,7 +127,9 @@ export default function Home() {
                       className="w-full rounded-t-md bg-gradient-to-t from-cyan-500/40 to-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.15)]"
                       style={{ height: `${Math.max(height, 10)}%` }}
                     />
-                    <span className="mt-2 text-xs text-slate-500">{index + 1}</span>
+                    <span className="mt-2 text-xs text-slate-500">
+                      {index + 1}
+                    </span>
                   </div>
                 );
               })}
@@ -197,9 +199,10 @@ export default function Home() {
           </h2>
 
           <p className="max-w-3xl leading-7 text-slate-400">
-            This project combines my background in avionics, data science and software engineering
-            to simulate a real-time flight monitoring system. The goal is to demonstrate how modern
-            web technologies and data-driven models can be used to build intuitive and scalable
+            This project combines my background in avionics, data science and
+            software engineering to simulate a real-time flight monitoring
+            system. The goal is to demonstrate how modern web technologies and
+            data-driven models can be used to build intuitive and scalable
             aviation interfaces.
           </p>
 
@@ -207,21 +210,24 @@ export default function Home() {
             <div className="rounded-2xl border border-slate-800 p-4">
               <h3 className="mb-2 font-medium text-white">Aviation</h3>
               <p className="text-sm text-slate-400">
-                Real-world domain knowledge applied to system design and telemetry interpretation.
+                Real-world domain knowledge applied to system design and
+                telemetry interpretation.
               </p>
             </div>
 
             <div className="rounded-2xl border border-slate-800 p-4">
               <h3 className="mb-2 font-medium text-white">Data Science</h3>
               <p className="text-sm text-slate-400">
-                Foundations for predictive models such as delay estimation and anomaly detection.
+                Foundations for predictive models such as delay estimation and
+                anomaly detection.
               </p>
             </div>
 
             <div className="rounded-2xl border border-slate-800 p-4">
               <h3 className="mb-2 font-medium text-white">Engineering</h3>
               <p className="text-sm text-slate-400">
-                Built with Next.js, TypeScript and scalable architecture principles.
+                Built with Next.js, TypeScript and scalable architecture
+                principles.
               </p>
             </div>
           </div>
@@ -231,7 +237,7 @@ export default function Home() {
   );
 }
 
-function TopBadge({ label, value }) {
+function TopBadge({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-slate-800 bg-slate-900/80 px-4 py-3">
       <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500">
@@ -242,17 +248,27 @@ function TopBadge({ label, value }) {
   );
 }
 
-function MetricCard({ title, value, subtitle }) {
+function MetricCard({
+  title,
+  value,
+  subtitle,
+}: {
+  title: string;
+  value: string;
+  subtitle: string;
+}) {
   return (
     <div className="rounded-3xl border border-slate-800 bg-slate-950/70 p-5 shadow-xl">
       <p className="text-sm font-medium text-slate-400">{title}</p>
-      <p className="mt-3 text-3xl font-semibold tracking-tight text-white">{value}</p>
+      <p className="mt-3 text-3xl font-semibold tracking-tight text-white">
+        {value}
+      </p>
       <p className="mt-2 text-sm text-cyan-400">{subtitle}</p>
     </div>
   );
 }
 
-function InfoMini({ label, value }) {
+function InfoMini({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-slate-800 bg-slate-900/70 px-4 py-3">
       <p className="text-xs text-slate-500">{label}</p>
@@ -261,7 +277,7 @@ function InfoMini({ label, value }) {
   );
 }
 
-function Panel({ title, text }) {
+function Panel({ title, text }: { title: string; text: string }) {
   return (
     <div className="rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-xl">
       <h3 className="text-lg font-semibold text-white">{title}</h3>
