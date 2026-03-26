@@ -57,13 +57,37 @@ export default function Home() {
               <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-cyan-400 sm:text-xs">
                 Aviation • Data Science • Software Engineering
               </p>
+
               <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
                 Flight Intelligence System
               </h1>
+
               <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400 md:text-base">
                 Real-time aviation monitoring dashboard with predictive modeling,
                 telemetry visualization and cockpit-inspired interaction design.
               </p>
+
+              <p className="mt-3 text-sm text-slate-500">
+                Developed by Frco. Javier Vallejo Gordillo · Avionics & Data Systems
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a
+                  href="TU_ENLACE_LINKEDIN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-xl border border-cyan-400/40 bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:bg-cyan-500/20"
+                >
+                  View LinkedIn Profile
+                </a>
+
+                <a
+                  href="#about-project"
+                  className="rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-medium text-slate-300 transition hover:border-slate-600 hover:bg-slate-800"
+                >
+                  Explore Project
+                </a>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -178,6 +202,21 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <FeatureCard
+            title="Real-time Simulation"
+            text="Dynamic telemetry updates simulating live aviation systems."
+          />
+          <FeatureCard
+            title="Data Visualization"
+            text="Interactive charts and radar interface for situational awareness."
+          />
+          <FeatureCard
+            title="Responsive Design"
+            text="Optimized for desktop and mobile environments."
+          />
+        </section>
+
         <section className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
           <Panel
             title="Mission"
@@ -193,7 +232,10 @@ export default function Home() {
           />
         </section>
 
-        <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-xl sm:p-8">
+        <section
+          id="about-project"
+          className="mt-10 rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-xl sm:p-8"
+        >
           <h2 className="mb-4 text-2xl font-semibold text-white">
             About This Project
           </h2>
@@ -232,6 +274,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <footer className="mt-10 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
+          © 2026 Frco. Javier Vallejo Gordillo · Flight Intelligence System
+        </footer>
       </div>
     </main>
   );
@@ -282,6 +328,21 @@ function Panel({ title, text }: { title: string; text: string }) {
     <div className="rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-xl">
       <h3 className="text-lg font-semibold text-white">{title}</h3>
       <p className="mt-3 text-sm leading-6 text-slate-400">{text}</p>
+    </div>
+  );
+}
+
+function FeatureCard({
+  title,
+  text,
+}: {
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-4 shadow-xl">
+      <h3 className="mb-2 font-medium text-white">{title}</h3>
+      <p className="text-sm text-slate-400">{text}</p>
     </div>
   );
 }
